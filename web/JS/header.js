@@ -13,5 +13,5 @@ menu.addEventListener("click", (event) => {
 
 logIn.style.cursor = "pointer";
 logIn.addEventListener("click", () => {
-    alert("¡Estamos trabajando en ello!")
+    window.location.replace("logIn.php")
 })

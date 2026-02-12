@@ -45,7 +45,7 @@
     background-repeat: no-repeat;
     background-size: 40%;
     background-position-x: center;
-    background-position-y: 100%;
+    background-position-y: 100px;
     background-color: gray;
 }
 
@@ -83,4 +83,35 @@
     font-size: 25px;
     color: blue;
     height: 100px;
+}
+
+.logInForm {
+    background-color: purple;
+    color: white;
+    width: 50%;
+    padding-block: 2%;
+    border-style: dashed;
+    border-color: yellow;
+    border-width: 5px;
+}
+
+.betterLink {
+    color: wheat;
+    background-color: purple;
+    padding: 1%;
+    border-style: dotted;
+    border-color: yellow;
+    border-width: 3px;
+}
+.betterLink:hover {
+    color: cyan;
+}
+.betterLink:active {
+    color: greenyellow;
+}
+
+.BL {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
 }
