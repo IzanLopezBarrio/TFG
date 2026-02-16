@@ -3,20 +3,24 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = Conexion::getPDO();
 
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email=:email and Contraseña=:passwd");
+        $stmt = $pdo->prepare("SELECT email FROM usuarios WHERE email=:email");
         $stmt->bindParam(":email", $_POST["email"]);
-        $stmt->bindParam(":passwd", $_POST["passwd"]);
 
         $stmt->execute();
 
         $row = $stmt->fetch();
 
-        if ($row != null) {
-            session_start();
-            $_SESSION["user"] = $row["UserName"];
-            header("Location: index.html");
+        if ($row == null) {
+            $stmt =  $pdo->prepare("INSERT INTO `usuarios`(`email`, `UserName`, `Contraseña`) VALUES (:email,:userName,:passwd)");
+            $stmt->bindParam(":email", $_POST["email"]);
+            $stmt->bindParam(":userName", $_POST["userName"]);
+            $stmt->bindParam(":passwd", $_POST["passwd"]);
+
+            $stmt->execute();
+            header("Location: login.php");
+            return;
         } else {
-            echo "<p class='afterNav red'>Las credenciales son incorrectas.</p><a href='register.php'>¿Desea crear un nuevo usuario?</a>";
+            echo "<p class='afterNav red'>El correo ya está registrado.</p><a href='logIn.php'>¿Ya tienes una cuenta?</a>";
         }
     }
 ?>
@@ -34,16 +38,18 @@
             <img class="c3 makeItSmall" src="IMG/userIcon.png">
         </header>
         <main class="afterNav">
-            <h1 class="introTXT overIMG"><b>Página de log in.</b></h1><br>
+            <h1 class="introTXT overIMG"><b>Página de registro.</b></h1><br>
             <form class="logInForm center" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                 <label class="center">Correo: </label><br>
-                <input class="center" type="email" name="email" id="email" required placeholder="Correo asignado al usuario"><br>
+                <input class="center" type="email" name="email" id="email" required placeholder="Establezca un correo electrónico."><br>
                 <label class="center">Contraseña: </label><br>
                 <input class="center" type="password" name="passwd" id="passwd" required placeholder="Contraseña..."><br>
+                <label class="center">Nombre de Usuario: </label><br>
+                <input class="center" type="text" name="userName" id="userName" required placeholder="Introduzca su nombre..."><br>
                 <input class="center" type="submit" value="Identificarse">
             </form>
 
-            <a href="register.php" class="betterLink BL">Registrarse</a>
+            <a href="logIn.php" class="betterLink BL">Ya tengo una cuenta</a>
         </main>
     </body>
 </html>
