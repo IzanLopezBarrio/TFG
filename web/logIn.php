@@ -14,7 +14,7 @@
         if ($row != null) {
             session_start();
             $_SESSION["user"] = $row["UserName"];
-            header("Location: index.html");
+            header("Location: acceso/index.php");
         } else {
             echo "<p class='afterNav red'>Las credenciales son incorrectas.</p><a href='register.php'>¿Desea crear un nuevo usuario?</a>";
         }

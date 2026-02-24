@@ -115,3 +115,22 @@
     bottom: 0%;
     left: 0%;
 }
+
+.listaIdiomas {
+    background-color: purple;
+    color: white;
+    width: 75%;
+    padding-block: 2%;
+    border-style: double;
+    border-color: yellow;
+    border-width: 5px;
+    font-size: large;
+    font-weight: bolder;
+
+    display: block;
+    margin: auto;
+}
+
+.tabbed {
+    margin-left: 50px;
+}
