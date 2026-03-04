@@ -13,6 +13,12 @@
     <body class="bgIMG">
         <header class="topNav">
             <a href="#" id="menu" class="fakeLink c1">=</a>
+            <section id="dropDown" class="hidden">
+                <ul>
+                    <li><a href="#" class="white linkDisabled">Perfil</a></li>
+                    <li><a href="index.php" class="betterLinkLite">Lista de Idiomas</a></li>
+                </ul>
+            </section>
             <img class="c3 makeItSmall" src="../IMG/userIcon.png">
         </header>
         <main class="afterNav">

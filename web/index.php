@@ -7,15 +7,15 @@
         <title>Aprende Idiomas</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="CSS/style.css">
-        <script defer type="module" src="JS/header.js"></script>
+        <script defer type="module" src="JS/headerLogIn.js"></script>
     </head>
     <body class="bgIMG">
         <header class="topNav">
-            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <a href="#" id="menu" class="fakeLink c1 hidden">=</a>
             <img class="c3 makeItSmall" src="IMG/userIcon.png">
         </header>
         <main class="afterNav">
-            <h1 class="introTXT overIMG"><b>¡Le damos la bienvenida a nuestra <span class="red">web de <br>aprendizaje de idiomas</span>!</b></h1>
+            <h1 class="introTXT overIMG"><b>¡Le damos la bienvenida a nuestra <span class="green">web de <br>aprendizaje de idiomas</span>!</b></h1>
             <br><br>
             <p class="center overIMG biggerTXT">Ofrecemos gran cantidad de ejercicios con corrección instantánea<br>para ayudarte a practicar.</p>
             <br><br><br>

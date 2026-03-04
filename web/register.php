@@ -30,11 +30,10 @@
         <title>Identificarse</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="CSS/style.css">
-        <script defer type="module" src="JS/header.js"></script>
     </head>
     <body class="bgIMG">
         <header class="topNav">
-            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <a href="#" id="menu" class="hidden fakeLink c1">=</a>
             <img class="c3 makeItSmall" src="IMG/userIcon.png">
         </header>
         <main class="afterNav">

@@ -69,11 +69,13 @@
     margin: auto;
 }
 .overIMG {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     width: fit-content;
     color: white !important;
     display: block;
     margin: auto;
+    padding-inline: 1%;
+    padding-block: 0.5%;
 }
 .biggerTXT {
     font-size: 30px;
@@ -82,9 +84,15 @@
 .red {
     color: red;
 }
+.white {
+    color: white;
+}
+.green {
+    color: #26FA02;
+}
 
 .logInButton {
-    background-color: gold;
+    background-color: #F5FA02;
     border-style: solid;
     border-width: 6px;
     border-color: black;
@@ -101,7 +109,7 @@
     width: 50%;
     padding-block: 2%;
     border-style: dashed;
-    border-color: yellow;
+    border-color: #F5FA02;
     border-width: 5px;
 }
 
@@ -110,7 +118,7 @@
     background-color: purple;
     padding: 1%;
     border-style: dotted;
-    border-color: yellow;
+    border-color: #F5FA02;
     border-width: 3px;
 }
 .betterLink:hover {
@@ -132,7 +140,7 @@
     width: 75%;
     padding-block: 2%;
     border-style: double;
-    border-color: yellow;
+    border-color: #F5FA02;
     border-width: 5px;
     font-size: large;
     font-weight: bolder;
@@ -143,4 +151,39 @@
 
 .tabbed {
     margin-left: 50px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.linkDisabled {
+    pointer-events: none;
+}
+
+#dropDown {
+    display: grid;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 10%;
+    line-height: 200%;
+    background-color: purple;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+
+    border-style:solid;
+    border-color: #F5FA02;
+    border-width: 3px;
+}
+
+.betterLinkLite {
+    color: wheat;
+    padding: 1%;
+}
+.betterLinkLite:hover {
+    color: cyan;
+}
+.betterLinkLite:active {
+    color: greenyellow;
 }

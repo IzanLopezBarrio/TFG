@@ -1,17 +1,14 @@
 const menu = document.getElementById("menu")
-const logIn = document.getElementById("botonPrincipal")
+const dropDown = document.getElementById("dropDown")
 
 menu.addEventListener("click", (event) => {
     event.preventDefault()
 
     if (menu.innerHTML == "=") {
         menu.innerHTML = "x"
+        dropDown.classList.remove("hidden")
     } else {
         menu.innerHTML= "="
+        dropDown.classList.add("hidden")
     }
-})
-
-logIn.style.cursor = "pointer";
-logIn.addEventListener("click", () => {
-    window.location.replace("logIn.php")
 })
