@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-02-2026 a las 17:38:03
+-- Tiempo de generación: 04-03-2026 a las 10:43:55
 -- Versión del servidor: 8.0.44
 -- Versión de PHP: 8.2.29
 
@@ -53,6 +53,13 @@ CREATE TABLE `resultados` (
   `Nota` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `resultados`
+--
+
+INSERT INTO `resultados` (`Usuario`, `Test`, `Nota`) VALUES
+('izanlopez256.3@gmail.com', 1, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -63,8 +70,17 @@ CREATE TABLE `test` (
   `ID` int NOT NULL,
   `Idioma` int NOT NULL,
   `Tipo` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `Titulo` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
   `Ruta` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `test`
+--
+
+INSERT INTO `test` (`ID`, `Idioma`, `Tipo`, `Titulo`, `Ruta`) VALUES
+(1, 1, 'Test', 'Test De Ejemplo', 'si/a.json'),
+(2, 2, 'Reading', 'Test De Ejemplo 2', 'si/a.json');
 
 -- --------------------------------------------------------
 
@@ -83,6 +99,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`email`, `UserName`, `Contraseña`) VALUES
+('izanlopez256.2@gmail.com', 'Izan', '123'),
 ('izanlopez256.3@gmail.com', 'Izan López Barrio', 'ejemplo123#');
 
 --
