@@ -1,9 +1,10 @@
 <?php
+    require "./PHP/VerificarLogOut.php";
     include "./PHP/ConexionDB.php";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = Conexion::getPDO();
 
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email=:email and Contraseña=:passwd");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email=:email AND Contraseña=:passwd");
         $stmt->bindParam(":email", $_POST["email"]);
         $stmt->bindParam(":passwd", $_POST["passwd"]);
 
@@ -14,6 +15,7 @@
         if ($row != null) {
             session_start();
             $_SESSION["user"] = $row["UserName"];
+            $_SESSION["userMail"] = $row["email"];
             header("Location: acceso/index.php");
         } else {
             echo "<p class='afterNav red'>Las credenciales son incorrectas.</p><a href='register.php'>¿Desea crear un nuevo usuario?</a>";

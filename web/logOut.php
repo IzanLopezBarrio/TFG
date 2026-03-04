@@ -4,4 +4,4 @@
     $_SESSION = [];
     setcookie(session_name(), "Adios", time() - 3600);
 
-    header("Location: index.html");
+    header("Location: index.php");

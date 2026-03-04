@@ -1,3 +1,6 @@
+<?php
+    require "./PHP/VerificarLogOut.php";
+?>
 <!DOCTYPE html>
 <html>
     <head>

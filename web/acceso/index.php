@@ -30,11 +30,12 @@
 
                     foreach ($row as $value) {
                         echo "<li>" . $value["nombre"] . "</li>";
-                        $stmt = $pdo->prepare("SELECT Nivel FROM idiomas WHERE Nombre='" . $value["nombre"] . "'");
+                        $stmt = $pdo->prepare("SELECT ID, Nivel FROM idiomas WHERE Nombre=:nombre");
+                        $stmt->bindParam(":nombre", $value["nombre"]);
                         $stmt->execute();
                         $rowB = $stmt->fetchAll();
                         foreach ($rowB as $values) {
-                            echo "<li class='tabbed'>" . $values["Nivel"] . "</li>";
+                            echo "<li class='tabbed'><a class='listaIdiomasLink' href='listaTests.php?idioma=" . $values["ID"] . "'>" . $values["Nivel"] . "</a></li>";
                         }
                     }
                 ?>
