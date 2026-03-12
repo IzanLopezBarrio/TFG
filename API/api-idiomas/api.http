@@ -1,0 +1,11 @@
+###
+GET http://localhost:9999/results/izanlopez256.3@gmail.com
+
+###
+GET http://localhost:9999/languages/all/1
+
+###
+GET http://localhost:9999/tests/1
+
+###
+GET http://localhost:9999/results/izanlopez256.3@gmail.com/1

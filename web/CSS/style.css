@@ -1,0 +1,190 @@
+.topNav {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 10%;
+
+    align-items: center;
+    text-align: center;
+}
+
+.listaIdiomasLink {
+    color: white;
+}
+.listaIdiomasLink:hover {
+    color: wheat;
+}
+.listaIdiomasLink:active {
+    color: crimson;
+}
+
+.fakeLink:active {
+    color: white;
+}
+.fakeLink:hover {
+    color: white;
+}
+.fakeLink {
+    color: white;
+    font-size:xx-large;
+}
+
+.c1 {
+    grid-column: 1;
+}
+.c3 {
+    grid-column: 3;
+}
+
+.makeItSmall {
+    width: auto;
+    height: 80%;
+}
+
+.afterNav {
+    margin-top: 6%;
+}
+
+.bgIMG {
+    background-image: url("../IMG/imgBanderas.png");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position-x: center;
+    background-position-y: 100px;
+    background-color: gray;
+}
+
+.introTXT {
+    text-align: center;
+    font-size: 72px !important;
+}
+.center {
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+.overIMG {
+    background-color: rgba(0,0,0,0.7);
+    width: fit-content;
+    color: white !important;
+    display: block;
+    margin: auto;
+    padding-inline: 1%;
+    padding-block: 0.5%;
+}
+.biggerTXT {
+    font-size: 30px;
+}
+
+.red {
+    color: red;
+}
+.white {
+    color: white;
+}
+.green {
+    color: #26FA02;
+}
+
+.logInButton {
+    background-color: #F5FA02;
+    border-style: solid;
+    border-width: 6px;
+    border-color: black;
+    border-radius: 50%;
+    width:25%;
+    font-size: 25px;
+    color: blue;
+    height: 100px;
+}
+
+.logInForm {
+    background-color: purple;
+    color: white;
+    width: 50%;
+    padding-block: 2%;
+    border-style: dashed;
+    border-color: #F5FA02;
+    border-width: 5px;
+}
+
+.betterLink {
+    color: wheat;
+    background-color: purple;
+    padding: 1%;
+    border-style: dotted;
+    border-color: #F5FA02;
+    border-width: 3px;
+}
+.betterLink:hover {
+    color: cyan;
+}
+.betterLink:active {
+    color: greenyellow;
+}
+
+.BL {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+}
+
+.listaIdiomas {
+    background-color: purple;
+    color: white;
+    width: 75%;
+    padding-block: 2%;
+    border-style: double;
+    border-color: #F5FA02;
+    border-width: 5px;
+    font-size: large;
+    font-weight: bolder;
+
+    display: block;
+    margin: auto;
+}
+
+.tabbed {
+    margin-left: 50px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.linkDisabled {
+    pointer-events: none;
+    color: grey;
+}
+
+#dropDown {
+    display: grid;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 10%;
+    line-height: 200%;
+    background-color: purple;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+
+    border-style:solid;
+    border-color: #F5FA02;
+    border-width: 3px;
+}
+
+.betterLinkLite {
+    color: wheat;
+    padding: 1%;
+}
+.betterLinkLite:hover {
+    color: cyan;
+}
+.betterLinkLite:active {
+    color: greenyellow;
+}

@@ -1,0 +1,50 @@
+<?php
+    require "./PHP/VerificarLogOut.php";
+    include "./PHP/ConexionDB.php";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $pdo = Conexion::getPDO();
+
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email=:email AND Contraseña=:passwd");
+        $stmt->bindParam(":email", $_POST["email"]);
+        $stmt->bindParam(":passwd", $_POST["passwd"]);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch();
+
+        if ($row != null) {
+            session_start();
+            $_SESSION["user"] = $row["UserName"];
+            $_SESSION["userMail"] = $row["email"];
+            header("Location: acceso/index.php");
+        } else {
+            echo "<p class='afterNav red'>Las credenciales son incorrectas.</p><a href='register.php'>¿Desea crear un nuevo usuario?</a>";
+        }
+    }
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Identificarse</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="hidden fakeLink c1">=</a>
+            <img class="c3 makeItSmall" src="IMG/userIcon.png">
+        </header>
+        <main class="afterNav">
+            <h1 class="introTXT overIMG"><b>Página de log in.</b></h1><br>
+            <form class="logInForm center" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+                <label class="center">Correo: </label><br>
+                <input class="center" type="email" name="email" id="email" required placeholder="Correo asignado al usuario"><br>
+                <label class="center">Contraseña: </label><br>
+                <input class="center" type="password" name="passwd" id="passwd" required placeholder="Contraseña..."><br>
+                <input class="center" type="submit" value="Identificarse">
+            </form>
+
+            <a href="register.php" class="betterLink BL">Registrarse</a>
+        </main>
+    </body>
+</html>
