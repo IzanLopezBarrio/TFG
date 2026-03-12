@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Listado Idiomas</title>
+        <title>Listado Tests</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../CSS/style.css">
         <script defer type="module" src="../JS/header.js"></script>

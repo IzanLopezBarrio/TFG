@@ -159,6 +159,7 @@
 
 .linkDisabled {
     pointer-events: none;
+    color: grey;
 }
 
 #dropDown {
