@@ -1,6 +1,6 @@
-class resultService {
+class userService {
 
-    static async getAll(user) {
+    static async login(email, passwd) {
 
         const mysql = require('mysql2/promise');
 
@@ -12,14 +12,14 @@ class resultService {
         });
 
         const [rows] = await con.execute(
-            'SELECT * FROM resultados WHERE Usuario = ?',
-            [user]
+            'SELECT * FROM usuarios WHERE email=? AND Contraseña=?',
+            [email, passwd]
         );
 
         return rows;
     }
 
-    static async getOne(user, test) {
+    static async register(email, userName, passwd) {
 
         const mysql = require('mysql2/promise');
 
@@ -31,12 +31,12 @@ class resultService {
         });
 
         const [rows] = await con.execute(
-            'SELECT * FROM resultados WHERE Usuario = ? AND Test = ?',
-            [user, test]
+            'INSERT INTO `usuarios`(`email`, `UserName`, `Contraseña`) VALUES (?, ?, ?)',
+            [email, userName, passwd]
         );
 
         return rows;
     }
 }
 
-module.exports = resultService;
+module.exports = userService;

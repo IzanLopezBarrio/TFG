@@ -1,19 +1,23 @@
 const listaIdiomas = document.getElementById("listaIdiomas")
+const bienvenida = document.getElementById("introTXT")
 
 getIdiomas()
 
 async function getIdiomas() {
-    fetch("http://localhost:9999/languages/all").then((response) => {
+    const name = getCookie("UserName")
+    bienvenida.innerHTML = "¡Bienvenido, " + name + "!"
+
+    await fetch("http://localhost:9999/languages/all").then((response) => {
         if (response.status !== 200) {
             throw new Error("Something went wrong on API server!");
         }
         return response.json();
     }).then((response) => {
-        response.forEach(element => {
+        response.forEach(async (element) => {
             const li = document.createElement("li")
             li.innerHTML = element.nombre
             listaIdiomas.appendChild(li)
-            fetch("http://localhost:9999/languages/niveles/" + element.nombre).then((responseB) => {
+            await fetch("http://localhost:9999/languages/niveles/" + element.nombre).then((responseB) => {
                 if (responseB.status !== 200) {
                     throw new Error("Something went wrong on API server!");
                 }
@@ -33,4 +37,20 @@ async function getIdiomas() {
             })
         });
     })
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }

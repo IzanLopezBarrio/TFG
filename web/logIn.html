@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Identificarse</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="CSS/style.css">
+        <script defer type="module" src="./JS/logIn.js"></script>
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="hidden fakeLink c1">=</a>
+            <img class="c3 makeItSmall" src="IMG/userIcon.png">
+        </header>
+        <main class="afterNav">
+            <h1 class="introTXT overIMG"><b>Página de log in.</b></h1><br>
+            <form class="logInForm center" method="POST" id="logInForm">
+                <p class="red" id="errorTag"></p>
+                <label class="center">Correo: </label><br>
+                <input class="center" type="email" name="email" id="email" required placeholder="Correo asignado al usuario"><br>
+                <label class="center">Contraseña: </label><br>
+                <input class="center" type="password" name="passwd" id="passwd" required placeholder="Contraseña..."><br>
+                <input class="center" type="submit" value="Identificarse">
+            </form>
+
+            <a href="register.html" class="betterLink BL">Registrarse</a>
+        </main>
+    </body>
+</html>
