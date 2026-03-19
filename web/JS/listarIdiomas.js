@@ -28,7 +28,7 @@ async function getIdiomas() {
                     li.classList.add("tabbed")
                     const a = document.createElement("a")
                     a.classList.add("listaIdiomasLink")
-                    a.href = "listaTests.php?idioma=" + elementB.ID
+                    a.href = "listaTests.html?idioma=" + elementB.ID
                     a.innerHTML = elementB.Nivel
 
                     li.appendChild(a)
