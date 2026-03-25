@@ -47,15 +47,10 @@
 }
 
 .afterNav {
-    margin-top: 8%;
+    margin-top: 6%;
 }
 
 .bgIMG {
-    background-image: url("../IMG/imgBanderas.png");
-    background-repeat: no-repeat;
-    background-size: 40%;
-    background-position-x: center;
-    background-position-y: 100px;
     background-color: #e2d6ef;
 }
 
@@ -74,7 +69,7 @@
     color: white !important;
     display: block;
     margin: auto;
-    padding-inline: 1.5%;
+    padding-inline: 1%;
     padding-block: 0.5%;
 }
 .biggerTXT {
@@ -189,9 +184,29 @@
     color: greenyellow;
 }
 
+.imgDisplay {
+    max-height: auto;
+    width:80%;
+    margin: auto;
+    display: block;
+}
+
+#gridMain {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+}
+
 @media (max-width: 960px) {
     .afterNav {
         margin-top: 12%;
+    }
+    #gridMain {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    .banderaIcon {
+        display: none;
     }
 }
 
