@@ -37,6 +37,9 @@
 .c1 {
     grid-column: 1;
 }
+.cs {
+    grid-column: 2;
+}
 .c3 {
     grid-column: 3;
 }
