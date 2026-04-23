@@ -45,9 +45,15 @@ async function listarTest() {
                 }
             })
 
-            const txt = document.createTextNode(element.Titulo + "; Tipo: " + element.Tipo + "; " + nota)
+            const txt = document.createTextNode(element.Titulo + "; Tipo: " + element.Tipo + "; " + nota + "; ")
+
+            const a = document.createElement("a")
+            a.classList.add("listaIdiomasLink")
+            a.href = "tests.html?testID=" + element.ID
+            a.innerHTML = "Realizar Test"
 
             li.appendChild(txt)
+            li.appendChild(a)
             listado.appendChild(li)
         });
     })

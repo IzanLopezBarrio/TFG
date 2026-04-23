@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Realización de tests</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../CSS/styleB.css">
+        <script defer type="module" src="../JS/header.js"></script>
+        <script defer type="module" src="../JS/forzarLogin.js"></script>
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+        <!-- Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <section id="dropDown" class="hidden">
+                <ul>
+                    <li><a href="perfil.html" class="betterLinkLite">Perfil</a></li>
+                    <li><a href="index.html" class="betterLinkLite">Lista de Idiomas</a></li>
+                </ul>
+            </section>
+            <h1 id="introTXT" class="c2"></h1>
+        </header>
+        <main class="afterNav">
+            <div id="root"></div>
+            <script type="text/babel">
+                const { useState, useMemo } = React;
+
+                function UnaDeCuatro(preguntas) {
+                    const arrayPreguntas = Object.values(preguntas["preguntas"]);
+                    const [pregunta, setPregunta] = useState(0);
+
+                    function handleClick() {
+                        if (pregunta < arrayPreguntas.length - 1) {
+                            setPregunta(pregunta + 1);
+                        } else {
+                            setPregunta(0);
+                        }
+                    }
+
+                    function shuffle(array) {
+                        return [...array].sort(() => Math.random() - 0.5);
+                    }
+
+                    function subminHandler(e) {
+                        e.preventDefault(); // ⛔ evita recarga
+
+                        const formData = new FormData(e.target);
+                        const respuesta = formData.get("opt");
+
+                        console.log(respuesta);
+                    }
+
+                    const respuestas = useMemo(() => {
+                        const actual = arrayPreguntas[pregunta];
+
+                        const opciones = [
+                            { key: "correct", value: actual.correct },
+                            { key: "fakeA", value: actual.fakeA },
+                            { key: "fakeB", value: actual.fakeB },
+                            { key: "fakeC", value: actual.fakeC }
+                        ];
+
+                        return shuffle(opciones);
+                    }, [pregunta, arrayPreguntas]);
+
+                    return (
+                        <>
+                            <h1>{arrayPreguntas[pregunta]["q"]}</h1>
+                            <form onSubmit={subminHandler}>
+                                {respuestas.map((resp, i) => (<>
+                                    <input type="radio" name="opt" key={i} value={resp.key}/>
+                                    <label>{resp.value}</label><br/>
+                                </>))}
+                                <button type="submit"> Comprobar respuesta</button>
+                            </form>
+                            <br/>
+                            <button type='button' onClick={handleClick}>
+                                Cambiar Pregunta
+                            </button>
+                        </>
+                    );
+                }
+
+                const introTXT = document.getElementById("introTXT")
+                const params = new URLSearchParams(document.location.search);
+                const testID = params.get("testID")
+
+                let testFile
+
+                let datos
+
+                fetch("http://localhost:9999/tests/id/" + testID).then((response) => {
+                    if (response.status !== 200) {
+                        throw new Error("Something went wrong on API server!");
+                    }
+                    return response.json();
+                }).then((response) => {
+                    const element = response[0]
+                    introTXT.innerHTML = "Test: " + element.Titulo
+                    testFile = element.Ruta
+                    fetch(testFile)
+                    .then(responseB => responseB.json())
+                    .then(data => {
+                        datos = data.questions
+
+                        const container = document.getElementById('root');
+                        const root = ReactDOM.createRoot(container);
+                        root.render(<UnaDeCuatro preguntas={datos}/>);
+                    })
+                    .catch(error => console.error(error));
+                })
+            </script>
+        </main>
+    </body>
+</html>

@@ -50,7 +50,7 @@
 }
 
 .afterNav {
-    margin-top: 6%;
+    margin-top: 6% !important;
 }
 
 .bgIMG {
@@ -196,6 +196,7 @@
 
 .canvasStyle {
     width: 75%;
+    margin: auto;
 }
 
 #gridMain {
