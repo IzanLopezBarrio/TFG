@@ -30,7 +30,7 @@ async function createChart() {
         labels: labels,
         datasets: [{
             data: data,
-            label: "Promedio de notas por idioma.",
+            label: "",
             backgroundColor: [
                 'rgba(255, 99, 132, 0.25)',
                 'rgba(255, 159, 64, 0.25)',
@@ -57,6 +57,11 @@ async function createChart() {
             scales: {
                 y: {
                     beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false,
                 }
             }
         }

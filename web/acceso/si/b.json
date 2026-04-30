@@ -1,0 +1,11 @@
+{
+    "type": "escribir",
+    "questions": {
+        "1": { "q": "are weaknesses What your strengths and ?", "correct": "What are your strengths and weaknesses?"},
+        "2": { "q": "in you experience any technologies green have Do ?", "correct": "Do you have any experience in green technologies?"},
+        "3": { "q": "moment you Are at working the ?", "correct": "Are you working at the moment?"},
+        "4": { "q": "as a you long worked engineer How have chemical ?", "correct": "How long have you worked as a chemical engineer?"},
+        "5": { "q": "us you would for Why like work to ?", "correct": "Why would you like to work for us?"},
+        "6": { "q": "first at your work would What day do you on ?", "correct": "What would you do on your first day at work?"}
+    }
+}

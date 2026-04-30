@@ -56,6 +56,42 @@ class resultService {
 
         return rows;
     }
+
+    static async firstTest(user, test, nota) {
+        const mysql = require('mysql2/promise');
+
+        const con = mysql.createPool({
+            host: "localhost",
+            user: "root",
+            password: "mysql",
+            database: "tfg"
+        });
+
+        const [rows] = await con.execute(
+            'INSERT INTO `resultados`(`Usuario`, `Test`, `Nota`) VALUES (?, ?, ?)',
+            [user, test, nota]
+        );
+
+        return rows;
+    }
+
+    static async redoneTest(user, test, nota) {
+        const mysql = require('mysql2/promise');
+
+        const con = mysql.createPool({
+            host: "localhost",
+            user: "root",
+            password: "mysql",
+            database: "tfg"
+        });
+
+        const [rows] = await con.execute(
+            'UPDATE `resultados` SET `Nota`=? WHERE `Usuario`=? AND `Test`=?',
+            [nota, user, test]
+        );
+
+        return rows;
+    }
 }
 
 module.exports = resultService;

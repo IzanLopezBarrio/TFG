@@ -139,12 +139,14 @@
     padding-block: 2%;
     border-style: double;
     border-color: #F5FA02;
-    border-width: 5px;
-    font-size: large;
-    font-weight: bolder;
-
+    border-width: 10px;
+    font-size: 25px;
+    font-weight: bolder;    
     display: block;
     margin: auto;
+
+    max-height: 80dvh;
+    overflow-y: scroll;
 }
 
 .tabbed {
@@ -153,6 +155,28 @@
 
 .hidden {
     display: none !important;
+}
+
+.tableClass {
+    text-align: center;
+    font-size: 25px;
+    display: table;
+    margin: auto;
+    width: 100%;;
+}
+th {
+    border-style: solid;
+    border-color: #F5FA02;
+    border-width: 2px;
+    background-color: blueviolet;
+    color: white;
+}
+td {
+    border-style: solid;
+    border-color: #F5FA02;
+    border-width: 2px;
+    background-color: blueviolet;
+    color: white;
 }
 
 .linkDisabled {
@@ -203,6 +227,16 @@
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
+}
+
+.BGgreen {
+    background-color: #26FA02;
+}
+.BGred {
+    background-color: crimson;
+}
+.widthForm {
+    width: 75%;
 }
 
 @media (max-width: 960px) {
