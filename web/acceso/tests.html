@@ -136,6 +136,8 @@
                                 </form>
                                 <br/>
                                 {respondido && <button type="button" onClick={nextQuestion}>Continuar</button>}
+                                <br/>
+                                <h3>Pregunta {pregunta + 1} de {arrayPreguntas.length}</h3>
                                 </>
                             )}
                             {finished && (
@@ -210,6 +212,8 @@
                                 </form>
                                 <br/>
                                 {respondido && <><h2>{respuestaCorrecta}</h2><br/><button type="button" onClick={nextQuestion}>Continuar</button></>}
+                                <br/>
+                                <h3>Pregunta {pregunta + 1} de {arrayPreguntas.length}</h3>
                                 </>
                             )}
                             {finished && (
@@ -232,6 +236,7 @@
 
                 let datos
                 let tipo
+                let cate
 
                 const mail = getCookie("email")
 
@@ -242,8 +247,9 @@
                     return response.json();
                 }).then((response) => {
                     const element = response[0]
-                    introTXT.innerHTML = "Test: " + element.Titulo
+                    introTXT.innerHTML = "Ejercicio: " + element.Titulo
                     testFile = element.Ruta
+                    cate = element.Tipo
                     fetch(testFile)
                     .then(responseB => responseB.json())
                     .then(data => {
@@ -268,7 +274,8 @@
                 async function compararNota(aciertos, preguntas) {
                     const notaLocal = (aciertos/preguntas*10).toFixed(2)
                     const data = {
-                        nota: notaLocal
+                        nota: notaLocal,
+                        cat: cate
                     }
 
                     await fetch("http://localhost:9999/results/" + mail + "/" + testID).then(async (responseB) => {

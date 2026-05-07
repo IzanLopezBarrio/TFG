@@ -1,8 +1,0 @@
-{
-    "type": "unaDeCuatro",
-    "questions": {
-        "1": { "q": "Hola", "correct": "Soy amable", "fakeA": "Adios", "fakeB": "Buenas Noches", "fakeC": "argentinaNoExiste"},
-        "2": { "q": "Cual es el killer gratis de OM", "correct": "X/2011x", "fakeA": "Kolossos", "fakeB": "Tripwire/Tails Doll", "fakeC": "Super Sonic/Fleetway"},
-        "3": { "q": "Que es el verbo 'to be'", "correct": "Un invento del gobierno", "fakeA": "No se", "fakeB": "Los amigos que hicimos por el camino", "fakeC": "Respuesta incorrecta"}
-    }
-}

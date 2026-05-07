@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-03-2026 a las 10:43:55
+-- Tiempo de generación: 06-05-2026 a las 12:46:09
 -- Versión del servidor: 8.0.44
 -- Versión de PHP: 8.2.29
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tfg`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `altas`
+--
+
+CREATE TABLE `altas` (
+  `Usuario` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `Idioma` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `altas`
+--
+
+INSERT INTO `altas` (`Usuario`, `Idioma`) VALUES
+('izanlopez256.3@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -50,15 +68,17 @@ INSERT INTO `idiomas` (`ID`, `Nombre`, `Nivel`) VALUES
 CREATE TABLE `resultados` (
   `Usuario` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
   `Test` int NOT NULL,
-  `Nota` int NOT NULL
+  `Categoria` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `Nota` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `resultados`
 --
 
-INSERT INTO `resultados` (`Usuario`, `Test`, `Nota`) VALUES
-('izanlopez256.3@gmail.com', 1, 5);
+INSERT INTO `resultados` (`Usuario`, `Test`, `Categoria`, `Nota`) VALUES
+('izanlopez256.3@gmail.com', 1, 'Test', 10),
+('izanlopez256.3@gmail.com', 2, 'Grammar', 6.67);
 
 -- --------------------------------------------------------
 
@@ -70,7 +90,7 @@ CREATE TABLE `test` (
   `ID` int NOT NULL,
   `Idioma` int NOT NULL,
   `Tipo` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `Titulo` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `Titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Ruta` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,8 +99,9 @@ CREATE TABLE `test` (
 --
 
 INSERT INTO `test` (`ID`, `Idioma`, `Tipo`, `Titulo`, `Ruta`) VALUES
-(1, 1, 'Test', 'Test De Ejemplo', 'si/a.json'),
-(2, 2, 'Reading', 'Test De Ejemplo 2', 'si/a.json');
+(1, 1, 'Test', 'Complete the sentences using the words and phrases in the box.', 'test/ejercicioA.json'),
+(2, 1, 'Grammar', 'Put the words in the correct order to make quiestions.', 'test/ejercicioB.json'),
+(25, 2, 'Nada', 'No say nada', './test/empty.json');
 
 -- --------------------------------------------------------
 
@@ -100,17 +121,26 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`email`, `UserName`, `Contraseña`) VALUES
 ('izanlopez256.2@gmail.com', 'Izan', '123'),
-('izanlopez256.3@gmail.com', 'Izan López Barrio', 'ejemplo123#');
+('izanlopez256.3@gmail.com', 'Izan López Barrio', 'ejemplo123#'),
+('izanlopez256@gmail.com', 'Izan', '123123123');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `altas`
+--
+ALTER TABLE `altas`
+  ADD PRIMARY KEY (`Usuario`,`Idioma`),
+  ADD KEY `fk_idioma_alta` (`Idioma`);
+
+--
 -- Indices de la tabla `idiomas`
 --
 ALTER TABLE `idiomas`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Nivel-Idioma` (`Nombre`,`Nivel`);
 
 --
 -- Indices de la tabla `resultados`
@@ -140,18 +170,26 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `idiomas`
 --
 ALTER TABLE `idiomas`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `altas`
+--
+ALTER TABLE `altas`
+  ADD CONSTRAINT `fk_idioma_alta` FOREIGN KEY (`Idioma`) REFERENCES `idiomas` (`ID`),
+  ADD CONSTRAINT `fk_user_alta` FOREIGN KEY (`Usuario`) REFERENCES `usuarios` (`email`);
+
+--
 -- Filtros para la tabla `resultados`
 --
 ALTER TABLE `resultados`
   ADD CONSTRAINT `FK_RT` FOREIGN KEY (`Test`) REFERENCES `test` (`ID`),
-  ADD CONSTRAINT `FK_RU` FOREIGN KEY (`Usuario`) REFERENCES `usuarios` (`email`);
+  ADD CONSTRAINT `FK_RU` FOREIGN KEY (`Usuario`) REFERENCES `usuarios` (`email`),
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`Usuario`) REFERENCES `usuarios` (`email`);
 
 --
 -- Filtros para la tabla `test`

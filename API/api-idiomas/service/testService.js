@@ -1,40 +1,20 @@
+const pool = require('../DBconector/DB.js');
+
 class testService {
 
     static async get(id) {
-
-        const mysql = require('mysql2/promise');
-
-        const con = mysql.createPool({
-            host: "localhost",
-            user: "root",
-            password: "mysql",
-            database: "tfg"
-        });
-
-        const [rows] = await con.execute(
+        const [rows] = await pool.execute(
             'SELECT * FROM test WHERE Idioma=?',
             [id]
         );
-
         return rows;
     }
 
     static async getOne(id) {
-
-        const mysql = require('mysql2/promise');
-
-        const con = mysql.createPool({
-            host: "localhost",
-            user: "root",
-            password: "mysql",
-            database: "tfg"
-        });
-
-        const [rows] = await con.execute(
+        const [rows] = await pool.execute(
             'SELECT * FROM test WHERE ID=?',
             [id]
         );
-
         return rows;
     }
 }

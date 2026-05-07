@@ -104,6 +104,21 @@
     align-items: center;
 }
 
+.buttonLike {
+    background-color: rgb(132, 0, 255);
+  border-radius: 50%;
+  width: 22%;
+  color: white;
+  height: 15%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 3px;
+  border-color: gray;
+  border-style: solid;
+}
+
 .logInForm {
     background-color: #8A2BE2;
     color: white;

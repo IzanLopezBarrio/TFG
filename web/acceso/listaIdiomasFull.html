@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Listado Tests</title>
+        <title>Listado Idiomas</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../CSS/styleB.css">
         <script defer type="module" src="../JS/header.js"></script>
-        <script defer type="module" src="../JS/listarTests.js"></script>
+        <script defer type="module" src="../JS/listarIdiomasFull.js"></script>
         <script defer type="module" src="../JS/forzarLogin.js"></script>
     </head>
     <body class="bgIMG">
@@ -17,25 +17,22 @@
                     <li><a href="index.html" class="betterLinkLite">Lista de Idiomas</a></li>
                 </ul>
             </section>
-            <h1 class="c2" id="queIdiomaSoy"></h1>
+            <h1 id="introTXT" class="c2">¡Bienvenido, </h1><br>
             <!-- <img class="c3 makeItSmall" src="../IMG/userIcon.png"> -->
         </header>
         <main class="afterNav">
-            <br><br>
+            <h2 class="center introTXT">Estos son los idiomas disponibles actualmente.</h2><br><br>
             <article id="gridMain">
                 <section class="banderaIcon">
                     <img class="imgDisplay" src="../IMG/imgBanderas.png" alt="Icono de la página.">
                 </section>
-                <p class="red tabbed hidden" id="soyUnError"></p>
-                <table>
-                    <tbody class="tableClass" id="listaTests">
-                        <tr>
-                            <th>Titulo</th><th>Tipo</th><th>Mejor Nota</th><th> </th>
-                        </tr>
-                    </tbody>
-                </table>
+                <section class="listaIdiomas">
+                    <ul id="listaIdiomas">
+                        
+                    </ul>
+                </section>
             </article>
-            <a href="./misIdiomas.html" class="betterLink BL">Volver</a>
+            <a href="./index.html" class="betterLink BL">Atras</a>
         </main>
     </body>
 </html>

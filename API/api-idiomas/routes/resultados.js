@@ -12,8 +12,17 @@ router.get("/:user", async function (req, res) {
     }
 });
 
+router.get("/idioma/:user/:id", async function (req, res) {
+    const results = await ResultService.getAllByLang(req.params.user, req.params.id)
+    if (results.length == 0) {
+        res.status(404).json(null)
+    } else {
+        res.json(results);
+    }
+});
+
 router.get("/group/:user", async function (req, res) {
-    const results = await ResultService.getAllFilter(req.params.user)
+    const results = await ResultService.getAllFilter(req.params.user.toString())
     if (results.length == 0) {
         res.status(404).json(null)
     } else {
@@ -31,7 +40,7 @@ router.get("/:user/:test", async function (req, res) {
 });
 
 router.post("/:user/:test", async function (req, res) {
-    const results = await ResultService.firstTest(req.params.user, req.params.test, req.body.nota)
+    const results = await ResultService.firstTest(req.params.user, req.params.test, req.body.nota, req.body.cat)
     if (results.length == 0) {
         res.status(404).json(null)
     } else {

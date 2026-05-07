@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Darse de alta</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../CSS/styleB.css">
+        <script defer type="module" src="../JS/header.js"></script>
+        <script defer type="module" src="../JS/forzarLogin.js"></script>
+    </head>
+    <body>
+        <script>
+            const params = new URLSearchParams(document.location.search);
+            const idiomaID = params.get("idioma")
+            const email = getCookie("email")
+
+            const data = {
+                user: email,
+                idioma: idiomaID
+            }
+
+            fetch("http://localhost:9999/languages/user/" + email + "/" + idiomaID).then((response) => {
+                return response.json()
+            }).then((response) => {
+                const check = response
+                if (check === null) {
+                    fetch("http://localhost:9999/languages/user/add", {method: 'POST', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
+                        if (response.status !== 200) {
+                            throw new Error('Autenticación Incorrecta');
+                        }
+                        return response.json();
+                    }).then((response) => {
+                        window.location.replace("./misIdiomas.html")
+                    })
+                } else {
+                    window.location.replace("./misIdiomas.html")
+                }
+            })
+
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
+    </body>
+</html>

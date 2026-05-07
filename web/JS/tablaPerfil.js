@@ -13,13 +13,13 @@ async function createChart() {
     const labels = []
     await fetch("http://localhost:9999/results/group/" + email).then((response) => {
         if (response.status !== 200) {
-            noTest.innerHTML = "No ha realizado ningún test. ¡Pongamonos manos a la obra!"
+            noTest.innerHTML = "No se ha dado de alta en ningún idioma. ¡Pongamonos manos a la obra!"
             throw new Error("Something went wrong on API server!");
         }
         return response.json()
     }).then((response) => {
         response.forEach(element => {
-            labels.push(element.Idioma + " " + element.Nivel)
+            labels.push(element.Idioma + " " + element.Nivel + " " + element.Categoria)
             data.push(element.Promedio)
         });
     })
@@ -49,7 +49,7 @@ async function createChart() {
                 'rgb(153, 102, 255)',
                 'rgb(201, 203, 207)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
         },
         options: {

@@ -1,0 +1,8 @@
+{
+    "type": "unaDeCuatro",
+    "questions": {
+        "1": { "q": "If you make a _______, you gain money by doing business, after your costs have been paid.", "correct": "profit", "fakeA": "funding", "fakeB": "target market", "fakeC": "pitch"},
+        "2": { "q": "A company's ________ is the customers that the product or service is aimed at.", "correct": "target market", "fakeA": "businesa angel", "fakeB": "profit", "fakeC": "funding"},
+        "3": { "q": "A _______ is someone who gives new business money, often inexchange for a share of the company.", "correct": "business angel", "fakeA": "target market", "fakeB": "worker", "fakeC": "lider"}
+    }
+}

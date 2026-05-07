@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Listado Idiomas</title>
+        <title>Menú Principal</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../CSS/styleB.css">
         <script defer type="module" src="../JS/header.js"></script>
-        <script defer type="module" src="../JS/listarIdiomas.js"></script>
         <script defer type="module" src="../JS/forzarLogin.js"></script>
     </head>
     <body class="bgIMG">
@@ -21,18 +20,40 @@
             <!-- <img class="c3 makeItSmall" src="../IMG/userIcon.png"> -->
         </header>
         <main class="afterNav">
-            <h2 class="center introTXT">¿Qué idioma desea practicar hoy?</h2><br><br>
+            <h2 class="center introTXT">¡Pongamonos manos a la obra!</h2><br><br>
             <article id="gridMain">
                 <section class="banderaIcon">
                     <img class="imgDisplay" src="../IMG/imgBanderas.png" alt="Icono de la página.">
                 </section>
                 <section class="listaIdiomas">
                     <ul id="listaIdiomas">
-                        
+                        <li><a class="listaIdiomasLink" href="./misIdiomas.html">Mis Idiomas</a></li>
+                        <li><a class="listaIdiomasLink" href="./listaIdiomasFull.html">Todos Los Idiomas</a></li>
                     </ul>
                 </section>
             </article>
             <a href="../logOut.html" class="betterLink BL">Cerrar Sesión</a>
         </main>
+        <script>
+            const bienvenida = document.getElementById("introTXT")
+            const name = getCookie("UserName")
+            bienvenida.innerHTML = "¡Bienvenido, " + name + "!"
+
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
     </body>
 </html>
