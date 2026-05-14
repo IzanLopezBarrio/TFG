@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Eliminando Usuario</title>
+        <meta charset="UTF-8">
+        <script defer type="module" src="./JS/forzarLogin.js"></script>
+    </head>
+    <body>
+        <script>
+            const email = getCookie("email")
+            
+            fetch("http://localhost:9999/languages/user/remove/all/" + email, {method: 'DELETE'}).then((response) => {
+                return response;
+            }).then((response) => {
+                fetch("http://localhost:9999/results/" + email, {method: 'DELETE'}).then((response) => {
+                    return response;
+                }).then((response) => {
+                    fetch("http://localhost:9999/users/unregister/" + email, {method: 'DELETE'}).then((response) => {
+                        window.location.replace("./logOut.html")
+                    })
+                })
+            })
+
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
+    </body>
+</html>

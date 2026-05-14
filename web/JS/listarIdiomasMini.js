@@ -28,8 +28,9 @@ async function getIdiomas() {
             }).then(async (response) => {
                 const idioma = response[0]
                 let li = document.createElement("li")
-                const a = document.createElement("a")
                 let txt
+                let aB
+                const a = document.createElement("a")
                 a.classList.add("listaIdiomasLink")
                 a.href = "listaTests.html?idioma=" + element.Idioma
                 a.innerHTML = idioma.nombre + " " + idioma.nivel
@@ -59,12 +60,18 @@ async function getIdiomas() {
 
                         const progreso = (testUser/test)*100
 
-                        txt = document.createTextNode(" | Progreso: " + progreso + "%")
+                        txt = document.createTextNode(" | Progreso: " + progreso + "% | ")
+
+                        aB = document.createElement("a")
+                        aB.classList.add("listaIdiomasLink")
+                        aB.href = "darseDeBaja.html?idioma=" + element.Idioma
+                        aB.innerHTML = "Darse de baja en este idioma"
                     })
                 })
 
                 li.appendChild(a)
                 li.appendChild(txt)
+                li.appendChild(aB)
                 listaIdiomas.appendChild(li)
             })
         })

@@ -35,8 +35,16 @@ router.post("/user/add", async function (req, res) {
     if (results.length == 0) {
         res.status(404).json(null)
     } else {
-        res.status(200).json(results);
+        res.status(201).json(results);
     }
+});
+router.delete("/user/remove", async function (req, res) {
+    const results = await LanguageService.removeIdiomasFromUser(req.body.user, req.body.idioma)
+    res.status(204).json(true);
+});
+router.delete("/user/remove/all/:user", async function (req, res) {
+    const results = await LanguageService.removeAllFromUser(req.params.user)
+    res.status(204).json(true);
 });
 
 router.get("/all/:id", async function (req, res) {

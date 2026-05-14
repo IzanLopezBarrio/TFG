@@ -10,6 +10,22 @@ class resultService {
         return rows;
     }
 
+    static async removeAll(user) {
+        const [rows] = await pool.execute(
+            'DELETE FROM resultados WHERE Usuario = ?',
+            [user]
+        );
+        return rows;
+    }
+
+    static async removeAllFilter(user, id) {
+        const [rows] = await pool.execute(
+            'DELETE r FROM resultados r INNER JOIN test t ON r.Test = t.ID WHERE r.Usuario = ? AND t.Idioma = ?',
+            [user, id]
+        );
+        return rows;
+    }
+
     static async getAllByLang(user, id) {
         const [rows] = await pool.execute(
             `SELECT r.Usuario, r.Test, r.Categoria, r.Nota

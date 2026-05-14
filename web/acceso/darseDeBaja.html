@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Darse de alta</title>
+        <title>Darse de baja</title>
         <meta charset="UTF-8">
         <script defer type="module" src="../JS/forzarLogin.js"></script>
     </head>
@@ -15,23 +15,13 @@
                 user: email,
                 idioma: idiomaID
             }
-
-            fetch("http://localhost:9999/languages/user/" + email + "/" + idiomaID).then((response) => {
-                return response.json()
+            
+            fetch("http://localhost:9999/languages/user/remove", {method: 'DELETE', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
+                return response;
             }).then((response) => {
-                const check = response
-                if (check === null) {
-                    fetch("http://localhost:9999/languages/user/add", {method: 'POST', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
-                        if (response.status !== 201) {
-                            throw new Error('Autenticación Incorrecta');
-                        }
-                        return response.json();
-                    }).then((response) => {
-                        window.location.replace("./misIdiomas.html")
-                    })
-                } else {
+                fetch("http://localhost:9999/results/filter/" + email + "/" + idiomaID, {method: 'DELETE'}).then((response) => {
                     window.location.replace("./misIdiomas.html")
-                }
+                })
             })
 
             function getCookie(cname) {

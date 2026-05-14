@@ -11,7 +11,19 @@ router.post("/login", async function (req, res) {
         }
         res.status(401).json(error)
     } else {
-        res.json(results);
+        res.status(200).json(results);
+    }
+});
+
+router.delete("/unregister/:email", async function (req, res) {
+    const results = await userService.remove(req.params.email)
+    if (results.length == 0) {
+        const error = {
+            mensaje: "Usuario y/o contraseña incorrectos."
+        }
+        res.status(401).json(error)
+    } else {
+        res.status(204).json(true);
     }
 });
 

@@ -211,6 +211,17 @@ td {
     color: greenyellow;
 }
 
+.betterLinkDanger {
+    color: orange;
+    padding: 1%;
+}
+.betterLinkDanger:hover {
+    color: yellow;
+}
+.betterLinkDanger:active {
+    color: black;
+}
+
 .imgDisplay {
     max-height: auto;
     width:80%;
@@ -237,6 +248,20 @@ td {
 }
 .widthForm {
     width: 75%;
+}
+
+.userInfoScreen {
+    background-color: blueviolet;
+    color: white;
+    width: 75%;
+    padding-block: 2%;
+    border-style: double;
+    border-color: #F5FA02;
+    border-width: 10px;
+    font-size: 25px;
+    font-weight: bolder;    
+    display: block;
+    margin: auto;
 }
 
 @media (max-width: 960px) {

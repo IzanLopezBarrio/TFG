@@ -12,6 +12,15 @@ router.get("/:user", async function (req, res) {
     }
 });
 
+router.delete("/:user", async function (req, res) {
+    const results = await ResultService.removeAll(req.params.user)
+    res.status(204).json(true)
+});
+router.delete("/filter/:user/:idioma", async function (req, res) {
+    const results = await ResultService.removeAllFilter(req.params.user, req.params.idioma)
+    res.status(204).json(true)
+});
+
 router.get("/idioma/:user/:id", async function (req, res) {
     const results = await ResultService.getAllByLang(req.params.user, req.params.id)
     if (results.length == 0) {
@@ -44,7 +53,7 @@ router.post("/:user/:test", async function (req, res) {
     if (results.length == 0) {
         res.status(404).json(null)
     } else {
-        res.json(results);
+        res.status(201).json(results);
     }
 });
 

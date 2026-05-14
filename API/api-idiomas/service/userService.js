@@ -10,6 +10,14 @@ class userService {
         return rows;
     }
 
+    static async remove(email) {
+        const [rows] = await pool.execute(
+            'DELETE FROM usuarios WHERE email=?',
+            [email]
+        );
+        return rows;
+    }
+
     static async register(email, userName, passwd) {
         const [rows] = await pool.execute(
             'INSERT INTO usuarios (email, UserName, Contraseña) VALUES (?, ?, ?)',

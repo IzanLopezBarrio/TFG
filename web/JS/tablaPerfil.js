@@ -11,6 +11,7 @@ async function createChart() {
     intro.innerHTML = intro.innerHTML + name
     const data = []
     const labels = []
+    let delayed
     await fetch("http://localhost:9999/results/group/" + email).then((response) => {
         if (response.status !== 200) {
             noTest.innerHTML = "No se ha dado de alta en ningún idioma. ¡Pongamonos manos a la obra!"
@@ -24,47 +25,91 @@ async function createChart() {
         });
     })
 
+    function colorize() {
+        return (ctx) => {
+            const v = ctx.parsed.x;
+            const c = v < 5 ? '#ff0000'
+            : v == 5 ? '#ffff00'
+            : '#00ff00';
+
+            return c;
+        };
+    }
+
+    function colorizeTrans() {
+        return (ctx) => {
+            const v = ctx.parsed.x;
+            const c = v < 5 ? 'rgba(255, 0, 0, 0.25)'
+            : v == 5 ? 'rgba(255, 255, 0, 0.25)'
+            : 'rgba(0, 255, 0, 0.25)';
+
+            return c;
+        };
+    }
+
     new Chart(ctx, {
         type: 'bar',
         data: {
         labels: labels,
         datasets: [{
             data: data,
-            label: "",
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.25)',
-                'rgba(255, 159, 64, 0.25)',
-                'rgba(255, 205, 86, 0.25)',
-                'rgba(75, 192, 192, 0.25)',
-                'rgba(54, 162, 235, 0.25)',
-                'rgba(153, 102, 255, 0.25)',
-                'rgba(201, 203, 207, 0.25)'
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-            ],
-            borderWidth: 2
+            label: "Media",
+            backgroundColor: colorizeTrans(),
+            borderColor: colorize(),
+            borderWidth: 3
         }]
         },
         options: {
             indexAxis: 'y',
             scales: {
-                y: {
-                    beginAtZero: true
+                x: {
+                    min: 0,
+                    max: 10,
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
                 }
             },
             plugins: {
                 legend: {
                     display: false,
+                },
+                datalabels: {
+                    anchor: 'center',
+                    align: 'center',
+                    formatter: function(value, context) {
+                        return value.toFixed(2);
+                    },
+                    font: {
+                        weight: 'bold',
+                        size: 32
+                    },
+                    display: function(context) {
+                        const index = context.dataIndex;
+                        const value = context.dataset.data[index];
+                        if (value > 0) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
                 }
+            },
+            animation: {
+                onComplete: () => {
+                    delayed = true;
+                },
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                        delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                },
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
 }
 

@@ -22,7 +22,9 @@ register.addEventListener("submit", async (event) => {
         }
         return response.json();
     }).then((response) => {
-        window.location.replace("logIn.html")
+        setCookie("email", email, 1)
+        setCookie("UserName", userName, 1)
+        window.location.replace("acceso/index.html")
     })
 })
 

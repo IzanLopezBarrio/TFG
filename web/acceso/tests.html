@@ -17,12 +17,13 @@
     <body class="bgIMG">
         <header class="topNav">
             <a href="#" id="menu" class="fakeLink c1">=</a>
-            <section id="dropDown" class="hidden">
+            <!-- <section id="dropDown" class="hidden">
                 <ul>
                     <li><a href="perfil.html" class="betterLinkLite">Perfil</a></li>
                     <li><a href="index.html" class="betterLinkLite">Lista de Idiomas</a></li>
+                    <li><a href="../logOut.html" class="betterLinkLite">Cerrar Sesión</a></li>
                 </ul>
-            </section>
+            </section> -->
             <h1 id="introTXT" class="c2"></h1>
         </header>
         <main class="afterNav">
@@ -31,7 +32,9 @@
                 const { useState, useEffect } = React;
 
                 function UnaDeCuatro(preguntas) {
-                    const arrayPreguntas = Object.values(preguntas["preguntas"]);
+                    const [arrayPreguntas] = useState(() => 
+                        shuffle(Object.values(preguntas["preguntas"]))
+                    );
                     const [pregunta, setPregunta] = useState(0);
                     const [finished, setFninished] = useState(false);
                     const [idCorrecta, setIdCorrecta] = useState(-1);

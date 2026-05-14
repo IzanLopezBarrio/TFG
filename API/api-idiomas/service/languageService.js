@@ -25,6 +25,19 @@ class languageService {
         return rows;
     }
 
+    static async removeIdiomasFromUser(user, idioma) {
+        const {rows} = await pool.execute(
+            'DELETE FROM `altas` WHERE `Usuario` = ? AND `Idioma` = ?',
+            [user, idioma]
+        );
+    }
+    static async removeAllFromUser(user) {
+        const {rows} = await pool.execute(
+            'DELETE FROM `altas` WHERE `Usuario` = ?',
+            [user]
+        );
+    }
+
     static async getIdioma(id) {
         const [rows] = await pool.execute(
             'SELECT nombre, nivel FROM idiomas WHERE ID=?',
