@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            const params = new URLSearchParams(document.location.search);
+            const email = params.get("user")
+
+            fetch("http://localhost:9999/users/upgrade/" + email, {method: 'GET'}).then((response) => {
+                return response;
+            }).then((response) => {
+                window.location.replace("./userToAdmin.html")
+            })
+        </script>
+    </head>
+</html>

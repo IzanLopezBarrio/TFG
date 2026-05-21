@@ -3,20 +3,43 @@
     <head>
         <title>Eliminando Usuario</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="./CSS/styleB.css">
+        <script defer type="module" src="./JS/header.js"></script>
         <script defer type="module" src="./JS/forzarLogin.js"></script>
     </head>
-    <body>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <section id="dropDown" class="hidden">
+                <ul>
+                    <li><a href="acceso/index.html" class="betterLinkLite">Menú Principal</a></li>
+                    <li><a href="acceso/perfil.html" class="betterLinkLite">Perfil</a></li>
+                    <li><a href="acceso/misIdiomas.html" class="betterLinkLite">Mis Idiomas</a></li>
+                    <li><a href="acceso/listaIdiomasFull.html" class="betterLinkLite">Lista de Idiomas Disponibles</a></li>
+                    <li><a href="logOut.html" class="betterLinkLite">Cerrar Sesión</a></li>
+                </ul>
+            </section>
+        </header>
+        <main class="afterNav">
+            <section class="userInfoScreen">
+                <h2 class="center">¿Seguro que desea borrar su cuenta? ¡No podrá recuperarla!</h2>
+                <a href="#" id="borrar" class="introTXT betterLinkDanger center">Borrar cuenta</a><a href="acceso/perfil.html" class="introTXT betterLinkLite center">Cancelar</a>
+            </section>
+        </main>
         <script>
             const email = getCookie("email")
             
-            fetch("http://localhost:9999/languages/user/remove/all/" + email, {method: 'DELETE'}).then((response) => {
-                return response;
-            }).then((response) => {
-                fetch("http://localhost:9999/results/" + email, {method: 'DELETE'}).then((response) => {
+            document.getElementById("borrar").addEventListener("click", (e) => {
+                e.preventDefault()
+                fetch("http://localhost:9999/languages/user/remove/all/" + email, {method: 'DELETE'}).then((response) => {
                     return response;
                 }).then((response) => {
-                    fetch("http://localhost:9999/users/unregister/" + email, {method: 'DELETE'}).then((response) => {
-                        window.location.replace("./logOut.html")
+                    fetch("http://localhost:9999/results/" + email, {method: 'DELETE'}).then((response) => {
+                        return response;
+                    }).then((response) => {
+                        fetch("http://localhost:9999/users/unregister/" + email, {method: 'DELETE'}).then((response) => {
+                            window.location.replace("./logOut.html")
+                        })
                     })
                 })
             })

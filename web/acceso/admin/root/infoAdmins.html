@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Detalles Usuario</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../../CSS/styleB.css">
+        <script defer type="module" src="../../../JS/header.js"></script>
+        <script defer type="module" src="JS/infoAdmin.js"></script>
+        <script defer type="module" src="../../../JS/forzarLogin.js"></script>
+        <script defer type="module" src="../../../JS/adminPanel.js"></script>
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <section id="dropDown" class="hidden">
+                <ul id="adminMenu">
+                    <li><a href="../../index.html" class="betterLinkLite">Menú Principal</a></li>
+                    <li><a href="../../perfil.html" class="betterLinkLite">Perfil</a></li>
+                    <li><a href="../../misIdiomas.html" class="betterLinkLite">Mis Idiomas</a></li>
+                    <li><a href="../../listaIdiomasFull.html" class="betterLinkLite">Lista de Idiomas Disponibles</a></li>
+                    <li><a href="../../../logOut.html" class="betterLinkLite">Cerrar Sesión</a></li>
+                </ul>
+            </section>
+            <h1 id="introTXT" class="c2">Info del usuario.</h1><br>
+            <!-- <img class="c3 makeItSmall" src="../IMG/userIcon.png"> -->
+        </header>
+        <main class="afterNav">
+            <article id="gridMain">
+                <section class="listaIdiomas">
+                    <button id="killUserButton" type="button" class="introTXT betterLinkDanger center">Eliminar Admin</button><br>
+                    <h2 id="killUserTXT" class="center">Esto eliminará a este admin de la base de datos. No es reversible.</h2>
+                </section>
+                <section class="listaIdiomas">
+                    <button id="downUserButton" type="button" class="introTXT betterLinkLite center">Convertir a usuario</button><br>
+                    <h2 id="downUserTXT" class="center">Esto convertirá este admin en usuario normal. Perderá acceso al panel de administrador.</h2>
+                </section>
+            </article>
+        </main>
+        <footer>
+            <a class="betterLink BL" href="listaAdmins.html">Volver</a>
+        </footer>
+    </body>
+</html>

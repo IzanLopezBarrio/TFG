@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nuevo Admin</title>
+        <meta charset="UTF-8">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../../CSS/style.css">
+        <script defer type="module" src="../../../JS/header.js"></script>
+        <script defer type="module" src="../../../JS/forzarLogin.js"></script>
+        <script defer type="module" src="../../../JS/checkAdmin.js"></script>
+        <script defer type="module" src="./JS/register.js"></script>
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="hidden fakeLink c1">=</a>
+            <h1 class="c2"><b>Registrar un nuevo administrador.</b></h1><br>
+            <!-- <img class="c3 makeItSmall" src="IMG/userIcon.png"> -->
+        </header>
+        <main class="afterNav flex">
+            <section class="banderaIcon">
+                <img src="../../../IMG/imgBanderas.png" alt="Icono de la página.">
+            </section>
+            <form class="logInForm center" method="POST" id="registerForm">
+                <label class="center logInLabel">Correo: </label><br>
+                <input class="center logInInput" type="email" name="email" id="email" required placeholder="Establezca un correo electrónico."><br>
+                <label class="center logInLabel">Contraseña: </label><br>
+                <input class="center logInInput" type="password" name="passwd" id="passwd" minlength="8" required placeholder="Contraseña..."><br>
+                <label class="center logInLabel">Nombre Del Administrador: </label><br>
+                <input class="center logInInput" type="text" name="userName" id="userName" required placeholder="Nombre..."><br>
+                <div style="display: ruby;" class="center">
+                    <input class="logInSend" type="submit" value="Crear Admin">
+                </div>
+            </form>
+        </main>
+        <footer>
+            <a class="betterLink BL" href="index.html">Volver</a>
+        </footer>
+    </body>
+</html>
