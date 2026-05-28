@@ -50,7 +50,7 @@
 }
 
 .afterNav {
-    margin-top: 6% !important;
+    margin-top: 6%;
 }
 
 .bgIMG {
@@ -189,7 +189,7 @@ td {
     position: absolute;
     top: 80%;
     left: 3%;
-    width: 10%;
+    width: 250px;
     line-height: 200%;
     background-color: blueviolet;
     grid-template-columns: 100%;
@@ -266,7 +266,7 @@ td {
 
 @media (max-width: 960px) {
     .afterNav {
-        margin-top: 12%;
+        margin-top: 15%;
     }
     #gridMain {
         display: grid;

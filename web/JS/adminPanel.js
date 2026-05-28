@@ -23,15 +23,7 @@ async function checkDaCookie() {
     }
     await fetch("http://localhost:9999/users/admin/check", {method: 'POST', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
         if (response.status === 200) {
-            const menu = document.getElementById("adminMenu")
-            const li = document.createElement("li")
-            const a = document.createElement("a")
-            a.href = "admin/adminPanel.html"
-            a.classList.add("betterLinkLite")
-            a.innerHTML = "Panel de Admin"
-            
-            li.appendChild(a)
-            menu.appendChild(li)
+            window.location.replace("admin/adminPanel.html")
         }
     })
 }

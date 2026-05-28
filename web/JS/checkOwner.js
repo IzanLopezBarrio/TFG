@@ -17,15 +17,13 @@ function getCookie(cname) {
 checkDaCookie()
 
 async function checkDaCookie() {
-  const email = getCookie("email")
-  if (email !== null && email !== undefined) {
+    const email = getCookie("email")
     const data = {
         email: email
     }
-    await fetch("http://localhost:9999/users/admin/check", {method: 'POST', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
-        if (response.status !== 200) {
-            window.location.replace("../index.html")
+    await fetch("http://localhost:9999/users/owner/check", {method: 'POST', headers: {'Content-Type': 'application/json',},body: JSON.stringify(data)}).then((response) => {
+        if (response.status === 200) {
+            window.location.replace("owner/index.html")
         }
     })
-  }
 }

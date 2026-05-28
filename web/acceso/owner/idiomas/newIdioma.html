@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crear Idioma</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../../CSS/style.css">
+        <script defer type="module" src="../../../JS/header.js"></script>
+        <script defer type="module" src="../../../JS/forzarLogin.js"></script>
+        <script defer type="module" src="../JS/checkOwner.js"></script>
+        <script defer type="module" src="JS/addIdioma.js"></script>
+    </head>
+    <body class="bgIMG">
+        <header class="topNav">
+            <a href="#" id="menu" class="fakeLink c1">=</a>
+            <section id="dropDown" class="hidden">
+                <ul id="adminMenu">
+                    <li><a href="../index.html" class="betterLinkLite">Menú Principal</a></li>
+                    <li><a href="../listaUsuarios.html" class="betterLinkLite">Usuarios</a></li>
+                    <li><a href="../root/index.html" class="betterLinkLite">Administradores</a></li>
+                    <li><a href="index.html" class="betterLinkLite">Idiomas</a></li>
+                    <li><a href="../../../logOut.html" class="betterLinkLite">Cerrar Sesión</a></li>
+                </ul>
+            </section>
+            <h1 id="introTXT" class="c2">Crear un nuevo Idioma.</h1><br>
+            <!-- <img class="c3 makeItSmall" src="../IMG/userIcon.png"> -->
+        </header>
+        <main class="afterNav flex">
+            <section class="banderaIcon">
+                <img src="../../../IMG/imgBanderas.png" alt="Icono de la página.">
+            </section>
+            <form class="logInForm center" method="POST" id="registerForm">
+                <label class="center logInLabel">Nombre Del Nuevo Idioma: </label><br>
+                <input type="text" class="center logInInput" name="idiomasExistentes" id="idiomasExistentes" required placeholder="Español, Inglés...">
+                <br><br>
+                <label class="center logInLabel">Crea Su Primer Nivel: </label><br>
+                <input class="center logInInput" type="text" name="lv" id="lv" maxlength="3" required placeholder="B1, B2, C1..."><br>
+                <div style="display: ruby;" class="center">
+                    <input class="logInSend" type="submit" value="Crear Idioma">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

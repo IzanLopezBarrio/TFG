@@ -27,7 +27,7 @@ class userService {
 
     static async getEveryone() {
         const [rows] = await pool.execute(
-            'SELECT * FROM `usuarios` WHERE NOT Rol = "Administrador";'
+            'SELECT * FROM `usuarios` WHERE NOT Rol = "Administrador" AND NOT Rol = "Propietario";'
         );
         return rows;
     }
@@ -42,6 +42,13 @@ class userService {
     static async checkAdmin(email) {
         const [rows] = await pool.execute(
             'SELECT * FROM `usuarios` WHERE Rol = "Administrador" AND email=?;',
+            [email]
+        );
+        return rows;
+    }
+    static async checkOwner(email) {
+        const [rows] = await pool.execute(
+            'SELECT * FROM `usuarios` WHERE Rol = "Propietario" AND email=?;',
             [email]
         );
         return rows;

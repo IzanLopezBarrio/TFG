@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            const params = new URLSearchParams(document.location.search);
+            const idioma = params.get("idioma")
+
+            fetch("http://localhost:9999/languages/niveles/" + idioma, {method: 'DELETE'}).then((response) => {
+                return response;
+            }).then((response) => {
+                window.location.replace("./listaIdiomas.html")
+            })
+        </script>
+    </head>
+</html>

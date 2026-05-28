@@ -79,6 +79,14 @@
     font-size: 30px;
 }
 
+.logInSelect {
+    font-size: larger;
+    height: 10%;
+    width: 50%;
+    background-color: rgb(89, 29, 146);
+    color: white;
+}
+
 .red {
     color: red;
 }
@@ -253,7 +261,7 @@
 
 @media (max-width: 960px) {
     .afterNav {
-        margin-top: 12%;
+        margin-top: 15%;
     }
     .banderaIcon {
         display: none;

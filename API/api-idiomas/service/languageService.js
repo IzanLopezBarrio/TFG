@@ -61,6 +61,35 @@ class languageService {
         );
         return rows;
     }
+
+    static async removeNivel(idioma) {
+        const [rows] = await pool.execute(
+            'DELETE FROM `idiomas` WHERE ID=?',
+            [idioma]
+        );
+        return rows;
+    }
+    static async removeIdiomasFromEveryone(idioma) {
+        const {rows} = await pool.execute(
+            'DELETE FROM `altas` WHERE `Idioma` = ?',
+            [idioma]
+        );
+    }
+    static async removeAllTestFilter(id) {
+        const [rows] = await pool.execute(
+            'DELETE r FROM resultados r INNER JOIN test t ON r.Test = t.ID WHERE t.Idioma = ?',
+            [id]
+        );
+        return rows;
+    }
+
+    static async newIdioma(name, lv) {
+        const [rows] = await pool.execute(
+            'INSERT INTO `idiomas`(`Nombre`, `Nivel`) VALUES (?,?)',
+            [name, lv]
+        );
+        return rows;
+    }
 }
 
 module.exports = languageService;

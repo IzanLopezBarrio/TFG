@@ -1,11 +1,8 @@
 const listaIdiomas = document.getElementById("listaIdiomas")
-const bienvenida = document.getElementById("introTXT")
 
 getIdiomas()
 
 async function getIdiomas() {
-    const name = getCookie("UserName")
-    bienvenida.innerHTML = "¡Bienvenido, " + name + "!"
 
     await fetch("http://localhost:9999/languages/all").then((response) => {
         if (response.status !== 200) {

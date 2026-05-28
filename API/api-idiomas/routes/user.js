@@ -64,7 +64,19 @@ router.post("/admin/check", async function (req, res) {
     const results = await userService.checkAdmin(req.body.email)
     if (results.length == 0) {
         const error = {
-            mensaje: "No hay usuarios (What?)."
+            mensaje: "No hay administradores (Vaya)."
+        }
+        res.status(404).json(false)
+    } else {
+        res.status(200).json(true);
+    }
+});
+
+router.post("/owner/check", async function (req, res) {
+    const results = await userService.checkOwner(req.body.email)
+    if (results.length == 0) {
+        const error = {
+            mensaje: "No hay propietario (Que has hecho?)."
         }
         res.status(404).json(false)
     } else {
@@ -73,14 +85,22 @@ router.post("/admin/check", async function (req, res) {
 });
 
 router.delete("/unregister/:email", async function (req, res) {
-    const results = await userService.remove(req.params.email)
-    if (results.length == 0) {
+    const check = await userService.checkOwner(req.params.email)
+    if (check.length == 0) {
+        const results = await userService.remove(req.params.email)
+        if (results.length == 0) {
+            const error = {
+                mensaje: "Usuario y/o contraseña incorrectos."
+            }
+            res.status(401).json(error)
+        } else {
+            res.status(204).json(true);
+        }
+    } else {
         const error = {
-            mensaje: "Usuario y/o contraseña incorrectos."
+            mensaje: "No puedes eliminar al propietarios de la web."
         }
         res.status(401).json(error)
-    } else {
-        res.status(204).json(true);
     }
 });
 
