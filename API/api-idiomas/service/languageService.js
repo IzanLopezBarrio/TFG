@@ -90,6 +90,14 @@ class languageService {
         );
         return rows;
     }
+
+    static async getUserInIdioma(id) {
+        const [rows] = await pool.execute(
+            'SELECT COUNT(*) as Personas FROM `altas` WHERE Idioma=?',
+            [id]
+        )
+        return rows;
+    }
 }
 
 module.exports = languageService;

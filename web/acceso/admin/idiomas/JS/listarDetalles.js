@@ -31,7 +31,7 @@ async function listarTest() {
             // throw new Error("Something went wrong on API server!");
         }
         return response.json()
-    }).then((response) => {
+    }).then(async (response) => {
 
         let txt = document.createTextNode("Nombre general del idioma: " + idioma[0].nombre)
         let h2 = document.createElement("h3") // Ha habido un cambio de planes.
@@ -51,11 +51,18 @@ async function listarTest() {
         h2.appendChild(txt)
         listado.appendChild(h2)
 
-        txt = document.createTextNode("Hay [TBA] usuarios registrados en este nivel.")
-        h2 = document.createElement("h3") // Ha habido un cambio de planes.
-        h2.classList.add("tabbed")
-        h2.appendChild(txt)
-        listado.appendChild(h2)
+        await fetch("http://localhost:9999/languages/count/" + idiomaID).then((response) => {
+          if (response.status !== 200) {
+              throw new Error("Something went wrong on API server!");
+          }
+          return response.json()
+        }).then((response) => {
+          txt = document.createTextNode("Hay " + response[0].Personas + " usuarios registrados en este nivel.")
+          h2 = document.createElement("h3") // Ha habido un cambio de planes.
+          h2.classList.add("tabbed")
+          h2.appendChild(txt)
+          listado.appendChild(h2)
+        })
 
         const a = document.createElement("a")
         a.href = "eliminarIdioma.html?idioma=" + idiomaID

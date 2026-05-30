@@ -84,4 +84,10 @@ router.post("/all", async function (req, res) {
         res.status(200).json(results);
     }
 });
+
+router.get("/count/:idioma", async function (req, res) {
+    const results = await LanguageService.getUserInIdioma(req.params.idioma)
+    res.status(200).json(results);
+});
+
 module.exports = router;
